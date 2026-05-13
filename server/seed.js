@@ -18,9 +18,12 @@ async function seed() {
 
   // Create users
   const admin = await User.create({
-    email: 'admin@maison.com', password: 'admin123', name: 'Admin User',
-    role: 'admin', status: 'active',
-  });
+  email: 'admin@maison.com',
+  password: 'admin123',
+  name: 'Admin User',
+  role: 'admin',
+  status: 'active',
+});
   const vendor1 = await User.create({
     email: 'vendor@nordicliving.com', password: 'vendor123', name: 'Erik Lindström',
     role: 'vendor', storeName: 'Nordic Living', storeDescription: 'Scandinavian-inspired premium furniture', status: 'active',
