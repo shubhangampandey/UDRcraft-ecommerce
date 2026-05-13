@@ -13,7 +13,7 @@ connectDB();
 app.use(cors({
   origin: [
     "http://localhost:8080",
-    "https://ud-rcraft-ecommerce-zmv9.vercel.app/"
+    "https://ud-rcraft-ecommerce-zmv9.vercel.app"
   ],
   credentials: true
 }));
