@@ -7,21 +7,52 @@ const signToken = (user) =>
   jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
 // POST /api/auth/register
+// POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
-    const safeRole = role === 'vendor' ? 'vendor' : 'customer';
+    const {
+      email,
+      password,
+      name,
+      role,
+      storeName,
+      storeDescription,
+    } = req.body;
 
-const user = await User.create({
-  email,
-  password,
-  name,
-  role: safeRole,
-  storeName,
-  storeDescription,
-  status: safeRole === 'vendor' ? 'pending' : 'active',
-});
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res.status(400).json({
+        message: 'User already exists',
+      });
+    }
+
+    const safeRole = role === 'vendor'
+      ? 'vendor'
+      : 'customer';
+
+    const user = await User.create({
+      email,
+      password,
+      name,
+      role: safeRole,
+      storeName,
+      storeDescription,
+      status: safeRole === 'vendor'
+        ? 'pending'
+        : 'active',
+    });
+
+    const token = signToken(user);
+
+    res.status(201).json({
+      user,
+      token,
+    });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({
+      message: err.message,
+    });
   }
 });
 
