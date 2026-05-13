@@ -38,7 +38,7 @@ const handlePayment = async () => {
   console.log("clicked");
   try {
     
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/create-payment`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/orders/create-payment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const handlePayment = async () => {
       order_id: data.id,
       handler: async function (response: any) {
   try {
-    const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/verify-payment`, {
+    const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/orders/verify-payment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

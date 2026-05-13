@@ -107,7 +107,7 @@ const handleDeleteAllProducts = async () => {
 
     const token = localStorage.getItem('maison_token');
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/delete-all`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/products/delete-all`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ const handleFetchImportedProducts = async () => {
   try {
     const token = localStorage.getItem('maison_token');
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/import`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/products/import`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ const handleDeleteImportedProducts = async () => {
   try {
     const token = localStorage.getItem('maison_token');
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/delete-imported`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/products/delete-imported`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

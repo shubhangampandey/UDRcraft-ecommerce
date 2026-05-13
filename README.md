@@ -57,7 +57,7 @@ npm run dev   # development with nodemon
 npm start     # production
 ```
 
-Server runs on `http://localhost:5000` by default.
+Server runs on `http://localhost:5000 ` by default.
 
 ## API Endpoints
 
